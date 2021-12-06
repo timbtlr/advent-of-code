@@ -15,22 +15,6 @@ class Row:
     def all_values_marked(self):
         return all([mark for mark in self.entries.values()])
 
-    def load_from_input(self, game_input):
-        for index in range(0, len(game_input), 6):
-            new_board = Board()
-            board_input = [
-                [int(value) for value in row.split(" ") if value]
-                for row in game_input[index : index + 5]
-            ]
-
-            for row in board_input:
-                new_board.add_row(row)
-
-            for column in range(0, len(board_input[0])):
-                new_board.add_row([row[column] for row in board_input])
-
-            self.boards.append(new_board)
-
 
 class Board:
     def __init__(self, input):
