@@ -6,7 +6,7 @@ def get_input(file_name):
     return input
 
 
-priorities = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
+priorities = " abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
 
 
 def part_1():
@@ -15,7 +15,7 @@ def part_1():
     for line in lines:
         middle = int(len(line) / 2)
         intersection += list(set([i for i in line[:middle] if i in line[middle:]]))
-    return sum([priorities.index(i) + 1 for i in intersection])
+    return sum([priorities.index(i) for i in intersection])
 
 
 def part_2():
@@ -24,7 +24,7 @@ def part_2():
     intersection = []
     for group in groups:
         intersection += list(set([i for i in group[0] if i in group[1] and i in group[2]]))
-    return sum([priorities.index(i) + 1 for i in intersection])
+    return sum([priorities.index(i) for i in intersection])
 
 
 print(part_1(), part_2())
