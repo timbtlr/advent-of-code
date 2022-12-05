@@ -9,15 +9,18 @@ def get_input(file_name: str):
 def get_stacks(input: str):
     stacks = None
     for line in input:
-        if "[" in line and "]" in line:
-            groups = [line[i : i + 3].strip().replace("[", "").replace("]", "") for i in range(0, len(line), 4)]
-            if not stacks:
-                stacks = []
-                for _ in range(0, len(groups)):
-                    stacks.append([])
-            for index, value in enumerate(groups):
-                if value != "":
-                    stacks[index].append(value)
+        if "[" not in line and "]" not in line:
+            break
+
+        groups = [line[i : i + 3].strip().replace("[", "").replace("]", "") for i in range(0, len(line), 4)]
+        if not stacks:
+            stacks = []
+            for _ in range(0, len(groups)):
+                stacks.append([])
+        for index, value in enumerate(groups):
+            if value != "":
+                stacks[index].append(value)
+
     return stacks
 
 
