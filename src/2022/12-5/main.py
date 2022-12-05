@@ -34,6 +34,14 @@ def build_output(stacks):
     return output
 
 
+def split_move_line(line: str):
+    split_line = line.split(" ")
+    amount = int(split_line[1])
+    source = int(split_line[3]) - 1
+    destination = int(split_line[5]) - 1
+    return amount, source, destination
+
+
 def part_1():
     input = get_input("src/2022/12-5/input.txt")
     stacks = get_stacks(input)
@@ -41,11 +49,7 @@ def part_1():
         if "move" not in line:
             continue
 
-        split_line = line.split(" ")
-        amount = int(split_line[1])
-        source = int(split_line[3]) - 1
-        destination = int(split_line[5]) - 1
-
+        amount, source, destination = split_move_line(line)
         for _ in range(0, amount):
             stacks[destination].insert(0, stacks[source].pop(0))
 
@@ -60,11 +64,7 @@ def part_2():
         if "move" not in line:
             continue
 
-        split_line = line.split(" ")
-        amount = int(split_line[1])
-        source = int(split_line[3]) - 1
-        destination = int(split_line[5]) - 1
-
+        amount, source, destination = split_move_line(line)
         stacks[destination] = stacks[source][:amount] + stacks[destination]
         stacks[source] = stacks[source][amount:]
 
