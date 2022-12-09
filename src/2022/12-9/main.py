@@ -51,8 +51,8 @@ class Knot:
         next_x = None
         next_y = None
 
-        x_move = abs(self.previous_knot.position[0] - self.position[0]) > 1
-        y_move = abs(self.previous_knot.position[1] - self.position[1]) > 1
+        x_move_threshold = abs(self.previous_knot.position[0] - self.position[0]) > 1
+        y_move_threshold = abs(self.previous_knot.position[1] - self.position[1]) > 1
         x_matches = self.previous_knot.position[0] == self.position[0]
         x_higher = self.previous_knot.position[0] > self.position[0]
         y_matches = self.previous_knot.position[1] == self.position[1]
@@ -79,16 +79,16 @@ class Knot:
                 next_x = self.position[0] - 1
                 next_y = self.position[1] 
 
-        elif x_move or y_move:
-                if x_higher:
-                    next_x = self.position[0] + 1
-                else:
-                    next_x = self.position[0] - 1
+        elif x_move_threshold or y_move_threshold: # Diagonal
+            if x_higher:
+                next_x = self.position[0] + 1
+            else:
+                next_x = self.position[0] - 1
 
-                if y_higher:
-                    next_y = self.position[1] + 1
-                else:
-                    next_y = self.position[1] - 1
+            if y_higher:
+                next_y = self.position[1] + 1
+            else:
+                next_y = self.position[1] - 1
 
         if next_x is not None and next_y is not None:
             self.previous_position = self.position
