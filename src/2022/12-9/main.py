@@ -19,9 +19,6 @@ class Knot:
         self.previous_position = None
         self.position = (0,0)
 
-    def should_move(self):
-        return abs(self.position[0] - self.previous_knot.position[0]) > 1 or abs(self.position[1] - self.previous_knot.position[1]) > 1
-
     def unique_positions(self):
         unique_positions = [len(set(self.visited))]
         if self.next_knot:
