@@ -61,7 +61,6 @@ def row_changed(cycle, row_size):
 
 
 def draw_pixel(cycle, register, row, row_size):
-    #print("DRAWING", cycle, cycle % 40, register)
     for index in [register-1, register, register+1]:
         if cycle % row_size == index:
             try:
