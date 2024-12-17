@@ -67,19 +67,9 @@ def solve(file_location):
         file_input = f.readlines()
 
     grid, current_location, directions = parse_input(file_input)
-    for row in grid:
-        print(row)
 
     for direction in directions:
         _, current_location = move_in_grid(grid, current_location, direction)
-        # print("")
-        # print("================")
-        # print("")
-        # for row in grid:
-        #     print(row)
-        #input()
-    # print(current_location)
-    # print(directions)
 
     total = 0
     for row_index, row in enumerate(grid):

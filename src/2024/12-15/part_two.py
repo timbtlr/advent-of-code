@@ -137,16 +137,9 @@ def solve(file_location):
         file_input = f.readlines()
 
     grid, current_location, directions = parse_input(file_input)
-    for row in grid:
-        print(row)
 
     for direction in directions:
         _, current_location = move_in_grid(grid, current_location, direction)
-        print("")
-        print("================")
-        print("")
-        print_grid(grid)
-        #time.sleep(0.01)
 
     total = 0
     for row_index, row in enumerate(grid):
@@ -156,6 +149,6 @@ def solve(file_location):
 
     return total
     
-#print("Simple Example", solve("example_simple.txt"))
-#print("Example", solve("example.txt"))
+print("Simple Example", solve("example_simple.txt"))
+print("Example", solve("example.txt"))
 print("Puzzle", solve("input.txt"))
