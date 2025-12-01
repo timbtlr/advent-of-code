@@ -107,14 +107,6 @@ def walk_path(grid, start_row, start_col):
         
     return min(final_scores)
 
-
-
-
-
-
-
-
-
 def solve(file_location):
     file_input = None
     with open(file_location) as f:
